@@ -63,7 +63,7 @@ export default function AdminLogin() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
@@ -76,6 +76,7 @@ export default function AdminLogin() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+    setError("");
     try {
       const res = await fetch(`${API_BASE}/api/admin/login`, {
         method: "POST",
@@ -83,19 +84,21 @@ export default function AdminLogin() {
         body: JSON.stringify({ username, password }),
       });
       const result = await res.json().catch(() => null);
-      if (!res.ok || !result?.token) {
-        setError(true);
-        setPassword("");
-        setLoading(false);
+      if (res.ok && result?.token) {
+        localStorage.setItem(ADMIN_AUTH_KEY, result.token);
+        navigate("/admin", { replace: true });
         return;
       }
-      localStorage.setItem(ADMIN_AUTH_KEY, result.token);
-      navigate("/admin", { replace: true });
-    } catch (err) {
-      setError(true);
       setPassword("");
+      if (res.status === 401) setError("Incorrect username or password.");
+      else if (res.status === 429) setError(result?.error || "Too many login attempts. Try again later.");
+      else setError(`Login failed: the server responded with ${res.status}. Please try again shortly.`);
+    } catch (err) {
+      // Network failure, blocked by CORS, or the backend is asleep/unreachable.
+      setError("We couldn't reach the server. It may be starting up — wait a moment and try again.");
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -116,7 +119,7 @@ export default function AdminLogin() {
           <ThemeSwitch />
           <div className="al-card">
             <h1>Admin Login</h1>
-            {error && <div className="al-error" role="alert">Incorrect username or password.</div>}
+            {error && <div className="al-error" role="alert">{error}</div>}
             <form className="al-form" onSubmit={handleSubmit}>
               <label className="field">
                 <span className="label">Username</span>
@@ -125,7 +128,7 @@ export default function AdminLogin() {
                   type="text"
                   placeholder="Enter admin username"
                   value={username}
-                  onChange={(e) => { setUsername(e.target.value); setError(false); }}
+                  onChange={(e) => { setUsername(e.target.value); setError(""); }}
                   autoComplete="username"
                   autoFocus
                 />
@@ -138,7 +141,7 @@ export default function AdminLogin() {
                     type={showPassword ? "text" : "password"}
                     placeholder="Enter admin password"
                     value={password}
-                    onChange={(e) => { setPassword(e.target.value); setError(false); }}
+                    onChange={(e) => { setPassword(e.target.value); setError(""); }}
                     autoComplete="current-password"
                   />
                   <button

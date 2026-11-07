@@ -27,5 +27,3 @@ backend/
 # Full-size source videos (compressed copies live in public/videos)
 /video-originals
 
-# Backend deploy config (backend is not part of this repo)
-/render.yaml
