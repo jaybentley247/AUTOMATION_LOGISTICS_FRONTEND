@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Check, Mail, MapPin } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Mail, MapPin, Phone } from "lucide-react";
 import NavBar from "./NavBar";
 import { API_BASE } from "./api";
 
@@ -26,6 +26,8 @@ const styles = `
   .ct-item .icon-tile { width: 40px; height: 40px; border-radius: 12px; }
   .ct-item-label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-3); }
   .ct-item-value { font-weight: 600; color: var(--text); }
+  .ct-item-link { text-decoration: none; }
+  .ct-item-link:hover { color: var(--accent-text); }
 
   .ct-hours { display: grid; }
   .ct-hours div { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; font-size: 0.93rem; border-bottom: 1px solid var(--border); }
@@ -198,6 +200,13 @@ export default function ContactPage() {
                   <span>
                     <span className="ct-item-label">Email</span>
                     <span className="ct-item-value">info@automationlogistics.com</span>
+                  </span>
+                </div>
+                <div className="ct-item">
+                  <span className="icon-tile"><Phone size={18} /></span>
+                  <span>
+                    <span className="ct-item-label">Phone</span>
+                    <a className="ct-item-value ct-item-link" href="tel:+18622920271">+1 (862) 292-0271</a>
                   </span>
                 </div>
                 <div className="ct-item">

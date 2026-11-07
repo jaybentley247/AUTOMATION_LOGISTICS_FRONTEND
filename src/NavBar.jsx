@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
-import { Mail, MapPin, Menu, X } from "lucide-react";
+import { Mail, MapPin, Menu, Phone, X } from "lucide-react";
 import ThemeSwitch from "./ThemeSwitch";
 import Logo from "./Logo";
 
@@ -18,7 +18,9 @@ const navStyles = `
     gap: 16px;
     min-height: 36px;
   }
-  .nv-top-item { display: inline-flex; align-items: center; gap: 7px; }
+  .nv-top-group { display: inline-flex; align-items: center; flex-wrap: wrap; gap: 4px 20px; }
+  .nv-top-item { display: inline-flex; align-items: center; gap: 7px; color: inherit; text-decoration: none; }
+  a.nv-top-item:hover { color: #fff; }
 
   .nv {
     position: sticky;
@@ -152,8 +154,13 @@ export default function NavBar() {
       <style>{navStyles}</style>
       <div className="nv-top">
         <div className="container">
-          <span className="nv-top-item">
-            <Mail size={13} /> info@automationlogistics.com
+          <span className="nv-top-group">
+            <span className="nv-top-item">
+              <Mail size={13} /> info@automationlogistics.com
+            </span>
+            <a className="nv-top-item" href="tel:+18622920271">
+              <Phone size={13} /> +1 (862) 292-0271
+            </a>
           </span>
           <span className="nv-top-item nv-address">
             <MapPin size={13} /> 56039 Nehalem Hwy S, Vernonia, OR 97064

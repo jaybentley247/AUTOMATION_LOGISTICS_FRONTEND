@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
-import { Mail, MapPin } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 
 const footerStyles = `
   .ft {
@@ -44,6 +44,8 @@ const footerStyles = `
     color: #f87171;
   }
   .ft-contact-text { font-size: 1.05rem; font-weight: 600; line-height: 1.5; }
+  .ft-contact-link { color: inherit; text-decoration: none; }
+  .ft-contact-link:hover { color: #f87171; }
 
   .ft-title {
     font-size: 0.75rem;
@@ -123,6 +125,10 @@ export default function Footer() {
               <div className="ft-contact-item">
                 <span className="ft-contact-icon"><Mail size={18} /></span>
                 <span className="ft-contact-text">info@automationlogistics.com</span>
+              </div>
+              <div className="ft-contact-item">
+                <span className="ft-contact-icon"><Phone size={18} /></span>
+                <a className="ft-contact-text ft-contact-link" href="tel:+18622920271">+1 (862) 292-0271</a>
               </div>
             </div>
           </div>
