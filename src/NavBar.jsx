@@ -156,7 +156,7 @@ export default function NavBar() {
         <div className="container">
           <span className="nv-top-group">
             <span className="nv-top-item">
-              <Mail size={13} /> info@automationlogistics.com
+              <Mail size={13} /> info@automationlogisticsint.com
             </span>
             <a className="nv-top-item" href="tel:+18622920271">
               <Phone size={13} /> +1 (862) 292-0271

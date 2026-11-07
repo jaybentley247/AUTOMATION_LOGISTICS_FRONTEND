@@ -328,7 +328,7 @@ export default function InvoicePage() {
             }}
           >
             <div>
-              https://automationlogistics.com/print-invoice?id=
+              https://automationlogisticsint.com/print-invoice?id=
               {shipment.trackingNumber}
             </div>
             <div style={{ marginLeft: "auto" }}>1/1</div>

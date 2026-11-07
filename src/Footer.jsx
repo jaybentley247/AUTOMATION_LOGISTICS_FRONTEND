@@ -124,7 +124,7 @@ export default function Footer() {
               </div>
               <div className="ft-contact-item">
                 <span className="ft-contact-icon"><Mail size={18} /></span>
-                <span className="ft-contact-text">info@automationlogistics.com</span>
+                <span className="ft-contact-text">info@automationlogisticsint.com</span>
               </div>
               <div className="ft-contact-item">
                 <span className="ft-contact-icon"><Phone size={18} /></span>

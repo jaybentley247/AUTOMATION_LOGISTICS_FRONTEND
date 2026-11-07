@@ -199,7 +199,7 @@ export default function ContactPage() {
                   <span className="icon-tile"><Mail size={18} /></span>
                   <span>
                     <span className="ct-item-label">Email</span>
-                    <span className="ct-item-value">info@automationlogistics.com</span>
+                    <span className="ct-item-value">info@automationlogisticsint.com</span>
                   </span>
                 </div>
                 <div className="ct-item">
