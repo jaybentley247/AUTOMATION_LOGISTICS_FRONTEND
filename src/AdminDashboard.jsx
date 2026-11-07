@@ -85,6 +85,7 @@ const styles = `
     font-weight: 700;
   }
   .ad-side-foot { margin-top: auto; display: grid; gap: 14px; padding: 14px 6px 0; border-top: 1px solid var(--border); }
+  .ad-side-foot .theme-switch { justify-self: start; }
   .ad-profile { display: flex; align-items: center; gap: 10px; }
   .ad-profile-img { width: 36px; height: 36px; border-radius: 50%; overflow: hidden; background: var(--surface-2); flex-shrink: 0; }
   .ad-profile-img img { width: 100%; height: 100%; object-fit: cover; }
@@ -135,7 +136,8 @@ const styles = `
   .ad-metric-note { font-size: 11px; color: var(--text-3); margin-left: 6px; }
 
   /* PANELS */
-  .ad-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+  /* Panels stack: the shipments table gets the full width, recent shipments below. */
+  .ad-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
   .ad-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
   .ad-card-header { padding: 16px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; gap: 12px; }
   .ad-card-title { font-size: 14px; font-weight: 700; color: var(--text); text-transform: uppercase; letter-spacing: 0.04em; }
@@ -316,7 +318,6 @@ const styles = `
   .btn-action:disabled { opacity: 0.5; cursor: not-allowed; }
 
   @media (max-width: 1280px) { .ad-metrics { grid-template-columns: repeat(3, 1fr); } }
-  @media (max-width: 1100px) { .ad-grid { grid-template-columns: 1fr; } }
   @media (max-width: 900px) {
     .ad-form-grid-2, .ad-form-grid-3 { grid-template-columns: 1fr; gap: 20px; }
     .ad-shell { grid-template-columns: 1fr; }
